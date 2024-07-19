@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visitor Home</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Header -->
+      <div class="row align-items-center">
+        <div class="col-4 col-md-2">
+          <div class="logo">
+            <a href="index.html">
+              <img src="img/logo.png" alt="Logo" />
+            </a>
+          </div>
+        </div>
+
+        <div class="col-4 col-md-8 text-center">
+          <h1 class="topHeader mt-3">Street ARTists</h1>
+        </div>
+
+        <div class="col-4 col-md-2 text-end">
+          <div class="voteLogo">
+            <img
+              src="img/voteLogo.png"
+              width="50px"
+              alt="Vote Logo"
+              class="img-fluid"
+              onclick="showAlert()"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- hr with shadow -->
+      <hr class="shadow-hr" />
+
+      <!-- Banner -->
+      <div class="lookingForAMasterpiece">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <h1 class="masterpieceText text-center">
+                Looking for a masterpiece?
+              </h1>
+            </div>
+            <div
+              class="col-md-6 d-flex align-items-center justify-content-center"
+            >
+              <a href="visitor-Listing.html" class="findOneNowBtn"
+                >Find one now!</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sliders  -->
+      <div class="sliders mt-3 pt-4">
+        <div class="side-track">
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image1.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image2.png" alt="Art 2" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image5.png" alt="Art 3" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image6.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image7.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image8.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <!-- dublicated img -->
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image1.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image2.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image5.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image6.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image7.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image8.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <!-- second Sliders -->
+      <div class="sliders pb-4">
+        <div class="side-track reverse">
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image5.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image7.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image1.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image2.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image9.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image6.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <!-- dublicated img -->
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image5.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image7.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image1.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image2.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image9.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+          <div class="slide">
+            <a href="visitor-Listing.html"
+              ><img src="img/image6.png" alt="Art 1" class="sliderImg w-100"
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carosel 22222 -->
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner container my-5">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="leftSide col-md-4 text-center">
+                <div class="smallPhoto mb-3">
+                  <img
+                    src="img/person1.png"
+                    alt="Person 1"
+                    class="img-fluid rounded-circle"
+                  />
+                </div>
+                <div class="personInfo mt-2">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Harum omnis sed, rerum laboriosam praesentium culpa.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex justify-content-center">
+                <div class="vertical-line"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="rightSideInfo text-center pt-4">
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Doloribus error modi, iusto harum expedita sint eaque
+                    voluptates.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="leftSide col-md-4 text-center">
+                <div class="smallPhoto mb-3">
+                  <img
+                    src="img/person3.png"
+                    alt="Person 1"
+                    class="img-fluid rounded-circle"
+                  />
+                </div>
+                <div class="personInfo mt-2">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Harum omnis sed, rerum laboriosam praesentium culpa.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex justify-content-center">
+                <div class="vertical-line"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="rightSideInfo text-center pt-4">
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Doloribus error modi, iusto harum expedita sint eaque
+                    voluptates.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="leftSide col-md-4 text-center">
+                <div class="smallPhoto mb-3">
+                  <img
+                    src="img/person4.png"
+                    alt="Person 1"
+                    class="img-fluid rounded-circle"
+                  />
+                </div>
+                <div class="personInfo mt-2">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Harum omnis sed, rerum laboriosam praesentium culpa.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex justify-content-center">
+                <div class="vertical-line"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="rightSideInfo text-center pt-4">
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Doloribus error modi, iusto harum expedita sint eaque
+                    voluptates.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript and Bootstrap Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!--  JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

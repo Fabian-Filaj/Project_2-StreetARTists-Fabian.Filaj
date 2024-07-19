@@ -1,0 +1,543 @@
+* {
+    font-family: "Roboto", cursive;
+}
+
+/* First Page CSS */
+.topHeader {
+    font-family: "Reenie Beanie", cursive;
+    color: #A16A5E;
+    font-size: 5rem;
+}
+
+@media (max-width: 768px) {
+    .topHeader {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .topHeader {
+        font-size: 30px;
+    }
+}
+
+.container-fluid {
+    background-color: #FCEBD5;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.shadow-hr {
+    box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.0);
+    border: 4;
+    height: 3px;
+    background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.9), transparent);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.section-artist,
+.section-visitors {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.section-artist {
+    background-color: #EDD5BB;
+}
+
+.joinasArtist {
+    color: #A16A5E;
+    font-family: "Reenie Beanie", cursive;
+    font-size: 60px;
+}
+
+.section-visitors {
+    background-color: #A16A5E;
+}
+
+.joinAsVisitor {
+    color: #FCEBD5;
+    font-family: "Reenie Beanie", cursive;
+    font-size: 60px;
+    padding: 1rem 0rem;
+}
+
+.chooseArtist {
+    background-color: #A16A5E;
+}
+
+.dropdown select {
+    max-width: 7rem;
+    background-color: #EDD5BB;
+    color: #A16A5E;
+    border: 1px solid #A16A5E;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+/*  hover effect */
+.section-artist:hover,
+.section-visitors:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+.section-artist:not(:hover),
+.section-visitors:not(:hover) {
+    transform: translateY(0);
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* Visitor Home Page */
+.logo img {
+    max-width: 100%;
+    height: auto;
+    min-width: 100px;
+}
+
+.voteLogo img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.lookingForAMasterpiece {
+    background-image: url('img/bricks.png');
+    background-size: cover;
+    background-position: center;
+    height: 47vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.masterpieceText {
+    color: #A16A5E;
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+.findOneNowBtn {
+    display: inline-block;
+    padding: 10px 50px;
+    font-size: 25px;
+    color: #fff;
+    background-color: #A16A5E;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.findOneNowBtn:hover {
+    background-color: #E09686;
+    color: #FCEBD5;
+}
+
+
+@media (max-width: 576px) {
+    .masterpieceText {
+        font-size: 36px;
+    }
+
+    .findOneNowBtn {
+        margin-top: 30px;
+        font-size: 18px;
+        padding: 8px 25px;
+    }
+}
+
+@media (min-width: 768px) {
+    .masterpieceText {
+        font-size: 3rem;
+    }
+
+    .findOneNowBtn {
+        font-size: 1.5rem;
+        padding: 15px 25px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .masterpieceText {
+        font-size: 7rem;
+    }
+
+    .findOneNowBtn {
+        font-size: 3rem;
+        padding: 20px 50px;
+    }
+
+    .topHeader {
+        font-size: 8rem;
+    }
+
+    .leftSide {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .rightSideInfo p {
+        font-size: 30px;
+    }
+}
+
+
+/* Sliders */
+.sliders {
+    margin: auto;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: #EDD5BB;
+}
+
+.side-track {
+    display: flex;
+    width: calc(500px * 12);
+    animation: scroll 40s linear infinite;
+}
+
+.side-track.reverse {
+    animation: scroll-reverse 40s linear infinite;
+}
+
+.side-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-500px * 6));
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(calc(-500px * 6));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    perspective: 100px;
+    transition: transform 0.3s ease;
+}
+
+/* .slide:hover {
+    transform: scale(1.1);
+} */
+
+.sliderImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.side-track.reverse {
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sliderImg {
+        width: 100%;
+        height: 150px;
+        height: auto;
+    }
+
+    .slide {
+        padding: 10px;
+    }
+}
+
+
+/* carousel */
+.vertical-line {
+    border-left: 3px solid #A16A5E;
+    height: 300px;
+}
+
+.leftSide {
+    background-color: #E09686;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.leftSide .smallPhoto {
+    margin-bottom: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: red;
+    border-radius: 50%;
+}
+
+.personInfo {
+    color: white;
+}
+
+.rightSideInfo {
+    color: #A16A5E;
+    padding-right: 50px;
+    font-size: large;
+}
+
+.leftSide .smallPhoto img {
+    width: 70px;
+    height: 70px;
+}
+
+@media (max-width: 768px) {
+
+    .leftSide p,
+    .rightSideInfo p {
+        font-size: 7px;
+    }
+
+    .vertical-line {
+        height: 200px;
+    }
+
+    .leftSide .smallPhoto img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/*  Visitor listing*/
+.card {
+    margin: 50px 0;
+    box-shadow: none;
+}
+
+.card img {
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 3.5rem;
+    font-family: "Reenie Beanie", cursive;
+}
+
+.card-text {
+    font-size: 1.4rem;
+}
+
+.card-price {
+    font-size: 1.1rem;
+}
+
+.card-artist {
+    font-size: 1rem;
+}
+
+/* Odd Cards */
+.odd-card .card-body {
+    background-color: #EDD5BB;
+}
+
+.odd-card .card-title,
+.odd-card .card-artist,
+.odd-card .card-price,
+.odd-card .card-text {
+    color: #A16A5E;
+}
+
+/* Even Cards */
+.even-card .card-body {
+    background-color: #A16A5E;
+}
+
+.even-card .card-title,
+.even-card .card-artist,
+.even-card .card-price,
+.even-card .card-text {
+    color: #EDD5BB;
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* filter btn */
+.filter-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Filter Panel */
+.filter-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100%;
+    background-color: #A16A5E;
+    color: #FCEBD5;
+    z-index: 1001;
+    transition: right 0.3s ease-in-out;
+}
+
+.filter-panel .filter-content h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.dividerHR {
+    border: 2px solid #FCEBD5;
+    margin: 40px 0px;
+}
+
+.filter-content {
+    padding: 30px;
+    position: relative;
+}
+
+.filter-panel.active {
+    right: 0;
+}
+
+.apply-filter-btn,
+.close-filter-btn {
+    cursor: pointer;
+    position: absolute;
+}
+
+.apply-filter-btn {
+    right: 20px;
+}
+
+.close-filter-btn {
+    top: 20px;
+    right: 20px;
+}
+
+.filterForm1 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px;
+    color: #FCEBD5;
+}
+
+.filterForm1 input,
+.filterForm1 select {
+    background-color: #A16A5E;
+    border-color: #FCEBD5;
+    width: 39%;
+    color: #FCEBD5;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+
+
+/* widgets */
+
+.widget {
+    background-color: #A16A5E;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.widget p {
+    font-size: 1.5rem;
+    color: #FCEBD5;
+}
+
+.widget h1 {
+    color: #FCEBD5;
+    font-size: 4rem;
+}
+
+/* hamburger menu */
+.hamburger-icon {
+    display: none;
+}
+
+.hamburgerMenu {
+    width: 50px;
+}
+
+@media (max-width: 767.98px) {
+    .hamburger-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #A16A5E;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 100px;
+    z-index: 1000;
+    display: none;
+    cursor: pointer;
+}
+
+.dropdown-menu.show {
+    display: block;
+
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #A16A5E;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    color: #E09686;
+}
+
+.dropdown-item {
+    font-size: 1.5rem;
+    color: #FCEBD5;
+}
+
+.chartText {
+    font-size: 1.5rem;
+    color: #A16A5E;
+
+}
+
+span {
+    color: #1B59AC;
+}
+/* editForm */
+.editForm{
+    color: #A16A5E;
+}

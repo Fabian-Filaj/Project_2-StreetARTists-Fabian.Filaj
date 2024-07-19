@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visitor Listing</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-4 col-md-2">
+          <div class="logo">
+            <a href="index.html">
+              <img src="img/logo.png" alt="Logo" />
+            </a>
+          </div>
+        </div>
+
+        <div class="col-4 col-md-8 text-center">
+          <h1 class="topHeader mt-3">Street ARTists</h1>
+        </div>
+
+        <div class="col-4 col-md-2 text-end">
+          <div class="voteLogo">
+            <img
+              src="img/voteLogo.png"
+              width="50px"
+              alt="Vote Logo"
+              class="img-fluid"
+              onclick="showAlert()"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- hr with shadow -->
+      <hr class="shadow-hr" />
+
+      <!--card container -->
+      <div class="container mt-5">
+        <div class="row" id="item-list">
+          <!-- cards here  -->
+        </div>
+      </div>
+    </div>
+    <!--  filter Button -->
+    <button id="filterButton" class="filter-btn">
+      <img src="img/filterBtn.png" alt="filter" />
+    </button>
+    <div id="filterPanel" class="filter-panel">
+      <div class="filter-content">
+        <h2>Filter by</h2>
+        <form class="filterForm1" id="filterForm">
+          <!--  by Item Name -->
+          <div class="mb-3">
+            <label for="filterName" class="form-label">By Item Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="filterName"
+              placeholder="Enter item title"
+            />
+          </div>
+          <div class="dividerHR"></div>
+          <!--  by Artist -->
+          <div class="mb-3">
+            <label for="filterArtist" class="form-label">By Artist</label>
+            <select class="form-select" id="filterArtist">
+              <option value="">Select artist</option>
+            </select>
+          </div>
+          <div class="dividerHR"></div>
+
+          <!--  by Price -->
+          <div class="mb-3">
+            <label class="form-label">By Price</label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="minPrice"
+                placeholder="Min"
+              />
+              <input
+                type="number"
+                class="form-control"
+                id="maxPrice"
+                placeholder="Max"
+              />
+            </div>
+          </div>
+          <div class="dividerHR"></div>
+
+          <!--  by Type -->
+          <div class="mb-3">
+            <label for="filterType" class="form-label">By Type</label>
+            <select class="form-select" id="filterType">
+              <option value="">Select type</option>
+            </select>
+          </div>
+          <div class="dividerHR"></div>
+          <!--  butonat per filter -->
+        </form>
+        <img
+          src="img/exitBTN.png"
+          id="closeFilterButton"
+          class="close-filter-btn"
+          alt="Close Filters"
+        />
+        <img
+          src="img/confirmBTN.png"
+          id="applyFiltersButton"
+          class="apply-filter-btn"
+          alt="Apply Filters"
+        />
+      </div>
+    </div>
+
+    <!-- data.js -->
+    <script src="data.js"></script>
+    <!-- JavaScript and Bootstrap Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!--  JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
