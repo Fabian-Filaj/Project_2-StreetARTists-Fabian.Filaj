@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -44,54 +44,51 @@
         <div class="col-4 col-md-1 text-center nav-links">
           <a href="index.html"><div>Home</div></a>
         </div>
-        <div class="col-4 col-md-1 text-center nav-links">
-          <a href="artist-items.html"><div>Items</div></a>
+        <div class="col-4 col-md-1 text-cente nav-links">
+          <a href="artist-Edit.html"><div>Edit</div></a>
         </div>
 
         <div class="col-4 col-md-2 text-center hamburger-icon">
           <img src="img/hamburgerMenu.png" alt="menu" id="hamburgerMenu" />
           <div class="dropdown-menu" id="dropdownMenu">
             <a class="dropdown-item text-center pb-2" href="index.html">Home</a>
-            <a class="dropdown-item text-center pt-2" href="artist-items.html"
-              >Items</a
+            <a class="dropdown-item text-center pt-2" href="artist-Edit.html"
+              >Edit</a
             >
           </div>
         </div>
       </div>
-
       <!-- hr with shadow -->
       <hr class="shadow-hr" />
 
       <!-- Add New Item Card -->
       <div class="container mt-5">
         <div class="row justify-content-center">
-          <div class="col-md-3">
-            <a href="./artist-Edit.html">
-              <div class="card add-new-item">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Add New Item</h5>
+            <div class="col-md-5 mt-3">
+                <div class="card add-new-item-card" onclick="window.location.href='artist-edit.html'">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Add New Item</h2>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Items Container -->
-      <div class="container">
-        <h1 id="artistNameHeader" class="my-4"></h1>
-        <div id="item-list" class="row"></div>
+    </div>
+      <!--card container -->
+      <div class="container mt-5">
+        <div class="row" id="item-list">
+          <!-- cards here  -->
+        </div>
       </div>
     </div>
 
+    <!-- data.js -->
+    <script src="data.js"></script>
     <!-- JavaScript and Bootstrap Bundle -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <!-- data.js -->
-    <script src="data.js"></script>
     <!--  JavaScript -->
     <script src="script.js"></script>
   </body>

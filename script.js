@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+  const artistList = document.getElementById("artistList");
   // ky EventListener perdoret kur useri zgjedh nje artist nga dropdown
   artistList.addEventListener("change", function () {
     //perdorim "change" meqe kemi te bejme me disa vlera
@@ -21,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // kjo kontrollon nese artisti i zgjedhur nuk eshte vet fjala "Choose", nese esht nuk ndodh gje, nese nuk esht vazhdon kodi:
     if (selectedArtist !== "Choose") {
+      //ruhet artisti i zgjedhur ne localStorage
+      localStorage.setItem("selectedArtist", selectedArtist);
       // ku rresht i ben redirect faqjes tek artist-Menu.html, ku si parameter URL ka emrin e artistit t zgjedhur
       window.location.href = `artist-Menu.html?artist=${encodeURIComponent(
         selectedArtist
@@ -108,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <h1 class="card-title">${item.artist}</h1>          
             <p class="card-text text-end boxText">$${item.price}</p>
             <p class="card-text">${item.title}</p>
-            <p class="card-artist">Artist: ${item.description}</p>
+            <p class="card-artist"> ${item.description}</p>
           </div>
         </div>
       `;
@@ -166,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 //
 // Artist Menu Page
-
 document.addEventListener("DOMContentLoaded", function () {
   // // kto rreshta vendosin tek h1 emrin e artisit te zgjedhur
   const urlParams = new URLSearchParams(window.location.search); // mer parametrin URL
@@ -176,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (artistName) {
     // kapa me ID <h1> ku do te vendoset emri i artistit dhe si textContent vendosa emrin e artisit te zgjedhur
     document.getElementById("artistNameHeader").textContent = artistName;
+    localStorage.setItem("selectedArtist", artistName); // e ruan ne local storage
   }
   // perllogarit total items sold dhe total income per artistin e zgjedhur
   function calculateArtistStats(artistName) {
@@ -214,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 // // chart
 document.addEventListener("DOMContentLoaded", function () {
-  
   // kto rreshta marin parametrat URL dhe vleren e key "artist"
   const urlParams = new URLSearchParams(window.location.search);
   const artistName = urlParams.get("artist");
@@ -242,11 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
       startDate.setDate(endDate.getDate() - range);
     }
 
-    console.log(`Filtering data for range: ${range}`);
-    console.log(`Start Date: ${startDate}`);
-    console.log(`End Date: ${endDate}`);
-
-    // filtrohet items array qe te perfshihen vetem ato items qe bejene match me emrin e artisit dhe qe bien te llogaritja e data range 
+    // filtrohet items array qe te perfshihen vetem ato items qe bejene match me emrin e artisit dhe qe bien te llogaritja e data range
     const filteredItems = items.filter((item) => {
       const itemDate = new Date(item.dateSold);
       return (
@@ -256,44 +254,37 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 
-    console.log("Filtered Items:", filteredItems);
-
     // i bejme map filteredItems tek nje array me objekte, ku jane te dhenat qe na duhen
     return filteredItems.map((item) => ({
       dateSold: item.dateSold,
       priceSold: item.priceSold,
-      originalPrice: item.price, 
+      originalPrice: item.price,
     }));
   }
 
   // funksioni qe i ben render charteve
   function renderChart(range) {
-
     // kto rreshtat marin dateSold, priceSold, dhe originalPrice nga filteredData dhe i ruajne ato ne array te ndara
     const filteredData = getFilteredData(range);
     const labels = filteredData.map((data) => data.dateSold);
     const soldPrices = filteredData.map((data) => data.priceSold);
     const originalPrices = filteredData.map((data) => data.originalPrice);
 
-    console.log("Chart Labels:", labels);
-    console.log("Sold Prices:", soldPrices);
-    console.log("Original Prices:", originalPrices);
-
     // struktura e chartit
     myChart = new Chart(ctx, {
-      type: "bar", 
+      type: "bar",
       data: {
         labels: labels,
         datasets: [
           {
             label: "Original Price",
             data: originalPrices,
-            backgroundColor: "#1B59AC", 
+            backgroundColor: "#1B59AC",
           },
           {
             label: "Price Sold",
             data: soldPrices,
-            backgroundColor: "#A16A5E", 
+            backgroundColor: "#A16A5E",
           },
         ],
       },
@@ -303,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
           x: {
             beginAtZero: true,
             ticks: {
-              stepSize: 250, 
+              stepSize: 250,
             },
           },
           y: {
@@ -332,52 +323,183 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 // Artist Items
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Artist Items Page: DOM fully loaded and parsed");
+  let items = JSON.parse(localStorage.getItem("items")) || [];
+  const itemList = document.getElementById("item-list");
+  const artistNameHeader = document.getElementById("artistNameHeader");
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const artistName = urlParams.get("artist");
+  const selectedArtistName =
+    localStorage.getItem("selectedArtist") || "Unknown Artist";
+  artistNameHeader.textContent = selectedArtistName;
 
-  console.log("Artist Name from URL:", artistName);
-
-  if (artistName) {
-    document.getElementById("artistNameHeader").textContent = artistName;
-
-    const artistNameDecoded = decodeURIComponent(artistName.trim());
-
-    console.log("Decoded Artist Name:", artistNameDecoded);
-
-    const filteredItems = items.filter(item => item.artist === artistNameDecoded && item.isPublished);
-
-    console.log("Filtered Items:", filteredItems);
-
-    if (filteredItems.length > 0) {
-      const artistItemsContainer = document.getElementById("artistItemsContainer");
-
-      filteredItems.forEach(item => {
-        const itemCard = document.createElement("div");
-        itemCard.classList.add("col-md-4", "mb-4");
-        itemCard.innerHTML = `
-          <div class="card">
-            <img src="${item.image}" class="card-img-top" alt="${item.title}">
-            <div class="card-body">
-              <h5 class="card-title">${item.title}</h5>
-              <p class="card-text">${item.description}</p>
-              <p class="card-text"><strong>Price:</strong> $${item.price}</p>
-            </div>
-          </div>
-        `;
-        artistItemsContainer.appendChild(itemCard);
-      });
-    } else {
-      console.log("No items found for the specified artist.");
-      document.getElementById("artistItemsContainer").innerHTML = "<p>No items found for this artist.</p>";
-    }
-  } else {
-    console.error("No artist name specified in the URL parameters.");
+  function formatDate(dateString) {
+    return dateString.split("T")[0];
   }
-});
 
+  function renderItems(items) {
+    itemList.innerHTML = "";
+    items.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.classList.add("col-md-12", "mt-3");
+      card.classList.add(index % 2 === 0 ? "even-card" : "odd-card");
+
+      const buttonClass = item.isPublished ? "btn-danger" : "btn-success";
+      const buttonText = item.isPublished ? "Unpublish" : "Publish";
+
+      card.innerHTML = `
+        <div class="card">
+          <img class="card-img-top" src="${item.image}" alt="${item.title}">
+          <div class="card-body">
+            <h1 class="card-title">${item.title}</h1>
+            <p class="card-text text-end boxText">$${item.price}</p>
+            <p class="card-text">${formatDate(item.dateCreated)}</p>
+            <p class="card-artist">${item.description}</p>
+            <button class="btn ${buttonClass} publish-toggle">${buttonText}</button>
+            <button class="btn btn-dark remove-item">Remove</button>
+            <button class="btn btn-light edit-item">Edit</button>
+          </div>
+        </div>
+      `;
+
+      itemList.appendChild(card);
+
+      //  event listener per buttons
+      card
+        .querySelector(".remove-item")
+        .addEventListener("click", () => removeItem(item, card));
+      card
+        .querySelector(".edit-item")
+        .addEventListener("click", () => editItem(item));
+      card
+        .querySelector(".publish-toggle")
+        .addEventListener("click", () => togglePublish(item, card));
+    });
+  }
+
+  function removeItem(item, card) {
+    if (confirm("Are you sure you want to remove this item?")) {
+      const index = items.findIndex((i) => i.id === item.id);
+      if (index > -1) {
+        items.splice(index, 1);
+        localStorage.setItem("items", JSON.stringify(items));
+        card.remove();
+      }
+    }
+  }
+
+  function editItem(item) {
+    localStorage.setItem("editItem", JSON.stringify(item));
+    window.location.href = "artist-edit.html";
+  }
+
+  function togglePublish(item, card) {
+    item.isPublished = !item.isPublished;
+    localStorage.setItem("items", JSON.stringify(items));
+    const button = card.querySelector(".publish-toggle");
+    button.textContent = item.isPublished ? "Unpublish" : "Publish";
+    button.classList.toggle("btn-success", !item.isPublished);
+    button.classList.toggle("btn-danger", item.isPublished);
+  }
+
+  const filteredItems = items.filter(
+    (item) => item.artist === selectedArtistName
+  );
+  renderItems(filteredItems);
+});
 
 //
 //
 //Artist-Edit page
+document.addEventListener("DOMContentLoaded", function () {
+  const itemForm = document.getElementById("itemForm");
+  const itemTitle = document.getElementById("itemTitle");
+  const itemDescription = document.getElementById("itemDescription");
+  const itemType = document.getElementById("itemType");
+  const itemPrice = document.getElementById("itemPrice");
+  const itemImage = document.getElementById("itemImage");
+  const isPublished = document.getElementById("isPublished");
+  const formTitle = document.getElementById("formTitle");
+  const cancelButton = document.getElementById("cancelButton");
+
+  itemTypes.forEach((type) => {
+    const option = document.createElement("option");
+    option.value = type;
+    option.textContent = type;
+    itemType.appendChild(option);
+  });
+
+  const editItem = JSON.parse(localStorage.getItem("editItem"));
+
+  if (editItem) {
+    formTitle.textContent = "Edit Item";
+    itemTitle.value = editItem.title;
+    itemDescription.value = editItem.description;
+    itemType.value = editItem.type;
+    itemPrice.value = editItem.price;
+    itemImage.value = editItem.image;
+    isPublished.checked = editItem.isPublished;
+  }
+
+  itemForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const updatedItem = {
+      ...editItem,
+      title: itemTitle.value,
+      description: itemDescription.value,
+      type: itemType.value,
+      price: parseFloat(itemPrice.value),
+      image: itemImage.value,
+      isPublished: isPublished.checked,
+      dateCreated: editItem ? editItem.dateCreated : new Date().toISOString(),
+      artist: editItem
+        ? editItem.artist
+        : localStorage.getItem("selectedArtist"),
+      dateSold: editItem ? editItem.dateSold : null,
+      priceSold: editItem ? editItem.priceSold : null,
+    };
+
+    let items = JSON.parse(localStorage.getItem("items")) || [];
+
+    if (editItem) {
+      items = items.map((item) =>
+        item.id === updatedItem.id ? updatedItem : item
+      );
+    } else {
+      updatedItem.id = Date.now();
+      items.push(updatedItem);
+    }
+
+    localStorage.setItem("items", JSON.stringify(items));
+
+    localStorage.removeItem("editItem");
+
+    window.location.href = "artist-items.html";
+  });
+
+  cancelButton.addEventListener("click", function () {
+    localStorage.removeItem("editItem");
+
+    window.location.href = "artist-items.html";
+  });
+});
+
+function updateItemInLocalStorage(itemId, updatedItem) {
+  let items = JSON.parse(localStorage.getItem("items")) || [];
+  items = items.map((item) => (item.id === itemId ? updatedItem : item));
+  localStorage.setItem("items", JSON.stringify(items));
+}
+
+function togglePublishStatus(itemId) {
+  let items = JSON.parse(localStorage.getItem("items")) || [];
+  items = items.map((item) => {
+    if (item.id === itemId) {
+      item.isPublished = !item.isPublished;
+    }
+    return item;
+  });
+  localStorage.setItem("items", JSON.stringify(items));
+}
+
+document.getElementById("publishButton").addEventListener("click", function () {
+  const itemId = togglePublishStatus(itemId);
+});

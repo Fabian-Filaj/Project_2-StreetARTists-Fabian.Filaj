@@ -1,7 +1,6 @@
 * {
     font-family: "Roboto", cursive;
 }
-
 /* First Page CSS */
 .topHeader {
     font-family: "Reenie Beanie", cursive;
@@ -149,6 +148,10 @@
         margin-top: 30px;
         font-size: 18px;
         padding: 8px 25px;
+    }
+
+    .filter-panel {
+        width: 100%;
     }
 }
 
@@ -352,6 +355,50 @@
     font-size: 1rem;
 }
 
+@media (max-width: 576px) {
+
+    .card-text,
+    .card-price,
+
+    .card-body {
+        font-size: 0.9rem;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+    }
+
+    .card-artist {
+        font-size: 0.7rem;
+    }
+
+    .joinasArtist {
+        font-size: 2.5rem;
+    }
+
+    .joinAsVisitor {
+        font-size: 2.5rem;
+
+    }
+
+    .logoIMG {
+        width: 120px;
+    }
+
+    #totalItemsSold {
+        font-size: 25px;
+    }
+
+    #totalIncome {
+        font-size: 25px;
+    }
+
+    .chartText {
+        font-size: 15px;
+
+    }
+}
+
 /* Odd Cards */
 .odd-card .card-body {
     background-color: #EDD5BB;
@@ -411,6 +458,17 @@
     margin-bottom: 25px;
 }
 
+@media (max-width: 576px) {
+    .filter-panel {
+        width: 100%;
+        right: -100%;
+    }
+
+    .filter-panel.active {
+        right: 0;
+    }
+}
+
 .dividerHR {
     border: 2px solid #FCEBD5;
     margin: 40px 0px;
@@ -456,10 +514,7 @@
     margin-top: 10px;
 }
 
-
-
 /* widgets */
-
 .widget {
     background-color: #A16A5E;
     padding: 20px;
@@ -537,7 +592,26 @@
 span {
     color: #1B59AC;
 }
+
 /* editForm */
-.editForm{
+.editForm {
     color: #A16A5E;
+}
+
+.add-new-item-card {
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+
+.add-new-item-card:hover {
+    background-color: #A16A5E;
+    transform: scale(1.05);
+}
+
+.add-new-item-card .card-body {
+    padding: 2rem;
 }
